@@ -12,7 +12,7 @@ const Navbar = () => {
         .catch()
 };
     return (
-        <div>
+        <div >
           <div className="navbar bg-base-100  ">
   <div className="navbar-start">
     <div className="dropdown">
@@ -43,21 +43,21 @@ const Navbar = () => {
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-lg"
            }>Home</NavLink></li>
-    <li><NavLink to="/"
+    <li><NavLink to="/add-job"
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
            }>Add Job</NavLink></li>
-    <li><NavLink to="/"
+    <li><NavLink to="/my-job"
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
            }>My Posted Jobs</NavLink></li>
-    <li><NavLink to="/"
+    <li><NavLink to="/my-bids"
             className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-emerald-950 text-base"
+              isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
            }>My Bids</NavLink></li>
-    <li><NavLink to="/"
+    <li><NavLink to="/request"
             className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-lg"
+              isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
            }>Bid
            Requests</NavLink></li>
       {/* <li tabIndex={0}>

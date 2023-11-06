@@ -27,7 +27,7 @@ const Footer = () => {
 
 <div className="footer px-10 py-4  ml-0  text-base-content ">
 <aside className="mr-auto">
-    <header className="footer-title text-lg">Contact</header> 
+    <header className="text-slate-400 font-bold text-lg">Contact</header> 
     <h3 className=" text-center text-base font-bold text-black">Call us: 01791234674</h3>
     <h1 className=" text-center text-base font-bold text-black">Email:workwave46@gmail.com</h1>
     <h3 className=" text-center text-base font-bold text-black">Website: work-wave.com</h3>
