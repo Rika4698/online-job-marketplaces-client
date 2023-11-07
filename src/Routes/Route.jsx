@@ -32,6 +32,7 @@ const router = createBrowserRouter([
         {
           path:'/update/:id',
           element:<UpdateData></UpdateData>,
+          loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`),
 
         },
         {
