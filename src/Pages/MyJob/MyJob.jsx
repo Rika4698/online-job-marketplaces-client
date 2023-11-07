@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 
 const MyJob = ({cards}) => {
-    const { name, image, deadline, category, description,minPrice,maxPrice } = cards || {};
+    const {_id, name, image, deadline, category, description,minPrice,maxPrice } = cards || {};
     const paragraphs = description.split('\n');
 
     // console.log(description.split('\n'));
@@ -21,7 +22,9 @@ const MyJob = ({cards}) => {
       ))}
     
     <div className="card-actions justify-between mt-4">
+    <Link to={`/update/${_id}`}>
       <button className="btn capitalize text-lg font-bold text-white bg-pink-400">Update</button>
+      </Link>
       <button className="btn capitalize text-lg font-bold text-white bg-red-500">Delete</button>
     </div>
   </div>

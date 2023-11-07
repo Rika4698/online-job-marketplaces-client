@@ -6,6 +6,8 @@ import Registration from "../Pages/Registration/Registration";
 import ErrorMessage from "../Pages/ErrorMessage/ErrorMessage";
 import AddJob from "../Pages/AddJob/AddJob";
 import MyJobSet from "../Pages/MyJob/MyJobSet";
+import UpdateData from "../Pages/UpdateData/UpdateData";
+
 
 
 const router = createBrowserRouter([
@@ -26,6 +28,11 @@ const router = createBrowserRouter([
             path:'/my-job',
             element:<MyJobSet></MyJobSet>,
             loader: () => fetch('http://localhost:5000/jobs'),
+        },
+        {
+          path:'/update/:id',
+          element:<UpdateData></UpdateData>,
+
         },
         {
            path:'/my-bids',
