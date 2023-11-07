@@ -1,16 +1,27 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Hook/AuthProvider";
 import swal from "sweetalert";
+import { useLocation, useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import moment from 'moment';
+// import Swal from "sweetalert2";
+
 
 
 const AddJob = () => {
+    const location = useLocation();
+  const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const email = user?.email;
     // console.log(email);
+   
+
     const handleJob = event => {
         event.preventDefault();
+        // const formattedDeadline = moment(deadline).format('MMMM Do YYYY, h:mm:ss a');
+        // console.log('Formatted Deadline:', formattedDeadline);
         const form = event.target;
-        console.log(form);
+        // console.log(form);
         
         const name = form.name.value;
         const image = form.image.value;
@@ -25,7 +36,7 @@ const AddJob = () => {
         
         const newJob = { name, image, email,deadline, category, description,minPrice,maxPrice }
 
-        console.log(newJob);
+        // console.log(newJob);
         //send data to the server
         fetch('http://localhost:5000/jobs',{
             method:'POST',
@@ -45,10 +56,46 @@ const AddJob = () => {
                 icon:'success',
             })
             }
+            navigate(location?.state?location.state :'/my-job' )
 
         })
 
     }
+    // console.log(handleJob);
+    // const handleAddJob =(id) =>{
+    //     const info = {id,email}
+    //     console.log(info);
+    //     fetch("http://localhost:5000/my-job", {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(info)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.upsertedId) {
+    //                 Swal.fire({
+    //                     position: 'top-end',
+    //                     icon: 'success',
+    //                     title: 'Job added in My Post Job',
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 })
+    //                 // setTotalLength(totalLength + 1);
+    //             } 
+    //             // else {
+    //             //     Swal.fire({
+    //             //         icon: 'error',
+    //             //         title: 'Opps!',
+    //             //         text: 'Already Exist in the Cart.',
+    //             //     })
+    //             // }
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // }
     return (
         <div>
             <div className="bg-[rgb(212,251,233)] p-24">
@@ -89,7 +136,7 @@ const AddJob = () => {
                             <span className="label-text font-semibold text-base">Deadline:</span>
                         </label>
                         <label className="input-group">
-                        <input type="date" placeholder="Deadline" className="input input-bordered w-full"  name="deadline" />
+                        <input type="text" placeholder="Deadline" className="input input-bordered w-full"  name="deadline" />
                         </label>
                     </div>
                 </div>
@@ -145,7 +192,10 @@ const AddJob = () => {
             
                 
                 <div className="text-center  text-xl rounded-lg bg-lime-500 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
-                <button >Add Button</button>
+                {/* <Link to='/my-job'> */}
+                <button  >Add Job</button>
+                
+                {/* </Link> */}
                 </div>
 
             </form>
