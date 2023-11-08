@@ -21,7 +21,7 @@ const AddJob = () => {
         // const formattedDeadline = moment(deadline).format('MMMM Do YYYY, h:mm:ss a');
         // console.log('Formatted Deadline:', formattedDeadline);
         const form = event.target;
-        // console.log(form);
+        console.log(form);
         
         const name = form.name.value;
         const image = form.image.value;

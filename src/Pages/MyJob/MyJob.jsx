@@ -1,15 +1,64 @@
-// import { useContext } from "react";
+/* eslint-disable no-unused-vars */
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-// import { AuthContext } from "../../Hook/AuthProvider";
-// import Swal from "sweetalert2";
+import { AuthContext } from "../../Hook/AuthProvider";
+import Swal from "sweetalert2";
 
 
-const MyJob = ({cards,handleDelete}) => {
-    // const { user } = useContext(AuthContext);
+const MyJob = ({cards,remove,setRemove}) => {
+    const { user } = useContext(AuthContext);
     const {_id, name, image, deadline, category, description,minPrice,maxPrice } = cards || {};
     const paragraphs = description.split('\n');
 
     // console.log(description.split('\n'));
+    const handleDelete = (_id) => {
+      console.log(_id);
+
+      Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+          console.log(result);
+          // const info = { email: user.email, id: id }
+          // console.log(info);
+          if (result.isConfirmed) {
+              fetch(`http://localhost:5000/jobs/${_id}`, {
+                  method: 'DELETE',
+                  // headers: {
+                  //     'content-type': 'application/json'
+                  // },
+                  // body: JSON.stringify(info)
+              })
+                  .then(res => res.json())
+                  .then(data => {
+          //             const filtered = jobCard.filter(cart => cart._id != id && user.email == cart.email);
+          //             console.log(filtered);
+          //             setJobCard(filtered);
+                      console.log(data);
+                      if ((data.deletedCount > 0)) {
+                          Swal.fire({
+                              // position: 'top-end',
+                              icon: 'success',
+                              title: 'Delete job succesfully.',
+                              showConfirmButton: false,
+                              timer: 1500
+                          })
+                          const filter = remove.filter(cart => cart._id != _id && user.email == cart.email);
+                          setRemove=(filter);
+          //                 // setTotalLength(totalLength - 1);
+                      }
+                    
+                  }
+                  )
+                  
+          }
+      })
+  };
    
     return (
         <div>
