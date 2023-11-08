@@ -7,6 +7,7 @@ import ErrorMessage from "../Pages/ErrorMessage/ErrorMessage";
 import AddJob from "../Pages/AddJob/AddJob";
 import MyJobSet from "../Pages/MyJob/MyJobSet";
 import UpdateData from "../Pages/UpdateData/UpdateData";
+import BrowseCategorySet from "../Pages/BrowseCategory/BrowseCategorySet";
 
 
 
@@ -19,6 +20,13 @@ const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>,
+            loader: () => fetch('http://localhost:5000/jobs')
+            
+        },
+        {
+           path:'/jobs/:category',
+           element:<BrowseCategorySet></BrowseCategorySet>,
+           
         },
         {
             path:'/add-job',
