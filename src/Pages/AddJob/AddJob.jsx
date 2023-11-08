@@ -61,41 +61,7 @@ const AddJob = () => {
         })
 
     }
-    // console.log(handleJob);
-    // const handleAddJob =(id) =>{
-    //     const info = {id,email}
-    //     console.log(info);
-    //     fetch("http://localhost:5000/my-job", {
-    //         method: 'PUT',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(info)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.upsertedId) {
-    //                 Swal.fire({
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: 'Job added in My Post Job',
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 })
-    //                 // setTotalLength(totalLength + 1);
-    //             } 
-    //             // else {
-    //             //     Swal.fire({
-    //             //         icon: 'error',
-    //             //         title: 'Opps!',
-    //             //         text: 'Already Exist in the Cart.',
-    //             //     })
-    //             // }
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
+   
     return (
         <div>
             <div className="bg-[rgb(212,251,233)] p-24">

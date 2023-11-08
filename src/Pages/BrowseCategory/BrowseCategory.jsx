@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 
 const BrowseCategory = ({job}) => {
-    const{name,image,deadline, minPrice,maxPrice, description} = job || {};
+    const{_id,name,image,deadline, minPrice,maxPrice, description} = job || {};
     const paragraphs = description.split('\n');
     // console.log(paragraphs[0]);
     return (
@@ -16,14 +17,16 @@ const BrowseCategory = ({job}) => {
     <h3 className="font-bold">Application deadline: </h3>
     <h3>{deadline}</h3>
     </div>
-    <h3 className="text-orange-600 font-bold">Price range: {minPrice}-{maxPrice}TK</h3>
+    <h3 className="text-orange-600 font-bold">Price range: {minPrice}TK-{maxPrice}TK</h3>
     <h3 className="font-bold text-xl text-blue-400">Description:</h3>
     
     <p className="" >{paragraphs[0]}</p>
      
 
     <div className="card-actions">
+      <Link to={`/jobs/${_id}`}>
       <button className="btn capitalize bg-lime-500 text-lg text-white mt-4">Bid Now</button>
+      </Link>
     </div>
   </div>
 </div>
