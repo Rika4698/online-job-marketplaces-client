@@ -8,10 +8,11 @@ import MyJob from "./MyJob";
 const MyJobSet = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
-    const[jobCard,setJobCard] = useState([]);
     const job = useLoaderData();
-    const[remove,setRemove] = useState(job);
-    // console.log(job);
+    const[jobCard,setJobCard] = useState([]);
+   
+    // const[jobs,setJobs] = useState(job);
+    // console.log(jobs);
     // const {email} = useParams();
     // console.log(email);
     useEffect(() => {
@@ -24,7 +25,7 @@ const MyJobSet = () => {
 
        
     },[email,job])
-    // console.log(jobCard.length);
+    // console.log(jobCard);
    
     return (
         <div>
@@ -38,7 +39,7 @@ const MyJobSet = () => {
             <div >
             {/* className="grid grid-cols-1 ml-16 pb-12 pt-20   md:grid-cols-2  lg:grid-cols-3  mr-6 gap-8"> */}
             {
-            jobCard.map(cards => <MyJob key={cards._id} cards={cards} remove={remove} setRemove={setRemove}></MyJob>
+            jobCard.map(cards => <MyJob key={cards._id} cards={cards}  jobCard={jobCard} setJobCard={setJobCard}></MyJob>
                 )
             }
              </div>

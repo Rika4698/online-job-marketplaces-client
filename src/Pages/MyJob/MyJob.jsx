@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Hook/AuthProvider";
+// import { AuthContext } from "../../Hook/AuthProvider";
 import Swal from "sweetalert2";
 
 
-const MyJob = ({cards,remove,setRemove}) => {
-    const { user } = useContext(AuthContext);
+const MyJob = ({cards,jobCard,setJobCard}) => {
+    // const { user } = useContext(AuthContext);
+    // console.log(jobCard);
     const {_id, name, image, deadline, category, description,minPrice,maxPrice } = cards || {};
     const paragraphs = description.split('\n');
 
@@ -24,33 +25,30 @@ const MyJob = ({cards,remove,setRemove}) => {
           confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
           console.log(result);
-          // const info = { email: user.email, id: id }
-          // console.log(info);
+          
           if (result.isConfirmed) {
               fetch(`http://localhost:5000/jobs/${_id}`, {
                   method: 'DELETE',
-                  // headers: {
-                  //     'content-type': 'application/json'
-                  // },
-                  // body: JSON.stringify(info)
+                 
               })
                   .then(res => res.json())
                   .then(data => {
-          //             const filtered = jobCard.filter(cart => cart._id != id && user.email == cart.email);
-          //             console.log(filtered);
-          //             setJobCard(filtered);
+                    
+          
                       console.log(data);
                       if ((data.deletedCount > 0)) {
                           Swal.fire({
-                              // position: 'top-end',
-                              icon: 'success',
-                              title: 'Delete job succesfully.',
-                              showConfirmButton: false,
-                              timer: 1500
+                            
+                              title: "Deleted!",
+                              text: "Your file has been deleted.",
+                              icon: "success"
+                            
                           })
-                          const filter = remove.filter(cart => cart._id != _id && user.email == cart.email);
-                          setRemove=(filter);
-          //                 // setTotalLength(totalLength - 1);
+                          
+                          const remaining = jobCard.filter(job => job._id !== _id );
+                          setJobCard  (remaining);
+                          console.log(jobCard);
+                         
                       }
                     
                   }
@@ -79,7 +77,7 @@ const MyJob = ({cards,remove,setRemove}) => {
     <Link to={`/update/${_id}`}>
       <button className="btn capitalize text-lg font-bold text-white bg-pink-400">Update</button>
       </Link>
-      <button onClick={()=>handleDelete(cards._id)} className="btn capitalize text-lg font-bold text-white bg-red-500">Delete</button>
+      <button onClick={()=>handleDelete(_id)} className="btn capitalize text-lg font-bold text-white bg-red-500">Delete</button>
     </div>
   </div>
 </div>
