@@ -1,12 +1,15 @@
 // import {  useState } from "react";
 import { useContext } from "react";
-import { useLoaderData} from "react-router-dom";
+import {  useLoaderData, useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider";
 import swal from "sweetalert";
+// import Swal from "sweetalert2";
 
 
 const JobDetailsSet = () => {
     // const[jobs,setJobs] = useState({});
+    const location = useLocation();
+  const navigate = useNavigate();
     const{user} = useContext(AuthContext);
     const userEmail = user?.email;
     const job =useLoaderData();
@@ -54,7 +57,8 @@ const JobDetailsSet = () => {
                 icon:'success',
             })
             }
-            // navigate(location?.state?location.state :'/my-job' )
+           
+            navigate(location?.state?location.state :'/my-bids' )
 
         })
 

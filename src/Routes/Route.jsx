@@ -10,6 +10,8 @@ import UpdateData from "../Pages/UpdateData/UpdateData";
 import JobDetailsSet from "../Pages/JobDetails/JobDetailsSet";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 
+import MyBidsSet from "../Pages/MyBids/MyBidsSet";
+
 
 
 
@@ -49,6 +51,9 @@ const router = createBrowserRouter([
         },
         {
            path:'/my-bids',
+           element:<PrivateRoute><MyBidsSet></MyBidsSet></PrivateRoute>,
+           loader: () => fetch('http://localhost:5000/bids'),
+
         },
         {
            path:'/request',
