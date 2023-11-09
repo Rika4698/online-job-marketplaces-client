@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { useLoaderData} from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider";
+import swal from "sweetalert";
 
 
 const JobDetailsSet = () => {
@@ -11,6 +12,7 @@ const JobDetailsSet = () => {
     const job =useLoaderData();
     const{ name, image,email, deadline, description,minPrice,maxPrice } = job;
     const paragraphs = description.split('\n');
+    // const [isDisabled, setIsDisabled] = useState(userEmail === email);
     // const bids = user.email == email;
     // console.log(bids);
 
@@ -18,43 +20,43 @@ const JobDetailsSet = () => {
         event?.preventDefault();
        
         const form = event.target;
-        console.log(form);
+        // console.log(form);
         
         
-        // const price = form.price.value;
+        const price = form.price.value;
         
-        // const deadline = form.deadline.value;
+        const deadline = form.deadline.value;
 
-        // const userEmail = form.userEmail.value;
-        // const email  = form.email.value;
-        // console.log(email);
+        const userEmail = form.userEmail.value;
+        const email  = form.email.value;
+        // console.log(deadline);
       
         
-        // const newJob = { name, image, email,deadline, category, description,minPrice,maxPrice }
+        const myBid = { name, price, email,deadline, userEmail }
 
-        // console.log(newJob);
+        console.log(myBid);
         //send data to the server
-        // fetch('http://localhost:5000/jobs',{
-        //     method:'POST',
-        //     headers: {
-        //         'content-type' : 'application/json'
-        //     },
-        //     body: JSON.stringify(newJob)
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log(data);
-        //     if(data.insertedId)
-        //     {
-        //     swal({
-        //         title: 'okay!',
-        //         text: 'Job Added Successfully ',
-        //         icon:'success',
-        //     })
-        //     }
-        //     // navigate(location?.state?location.state :'/my-job' )
+        fetch('http://localhost:5000/bids',{
+            method:'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(myBid)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId)
+            {
+            swal({
+                title: 'okay!',
+                text: ' Bid Successfully ',
+                icon:'success',
+            })
+            }
+            // navigate(location?.state?location.state :'/my-job' )
 
-        // })
+        })
 
     }
    
@@ -76,9 +78,12 @@ const JobDetailsSet = () => {
   <div className="card-body bg-slate-200">
     <h2 className="card-title font-bold text-3xl">{name}</h2>    
         
-    <h3 className="text-black">Deadline:  {deadline}</h3>    
+    <div className="flex gap-2">
+    <h3 className="text-green-600 font-bold ">Deadline:</h3>
+    <h3 className="">{deadline}</h3>
+        </div>    
     <h3 className="text-orange-600 font-bold">Price range: {minPrice}TK-{maxPrice}TK</h3>
-    <h3 className="font-bold text-xl text-green-600">Description:</h3>
+    <h3 className="font-bold text-xl text-pink-600">Description:</h3>
     {paragraphs.map((paragraph, index) => (
         <p className="" key={index}>{paragraph}</p>
       ))}
@@ -88,7 +93,7 @@ const JobDetailsSet = () => {
 
 <div className="bg-[rgb(248,245,248)] p-24">
             <h2 className="text-5xl font-extrabold text-center text-green-400  mb-10"> Place Your Bid</h2>
-            <form onClick={handleBid} > 
+            <form onSubmit={handleBid} > 
                 
                 <div className="md:flex mb-8">
                 <div className="form-control md:w-1/2">
@@ -104,7 +109,7 @@ const JobDetailsSet = () => {
                             <span className="label-text font-semibold text-base">Deadline:</span>
                         </label>
                         <label className="input-group">
-                        <input type="text" placeholder="Deadline" className="input input-bordered w-full"  name="deadline" />
+                        <input type="text" placeholder="Deadline" className="input input-bordered w-full"  name="deadline"  />
                         </label>
                     </div>
                     
@@ -130,10 +135,20 @@ const JobDetailsSet = () => {
                         </label>
                     </div>
                 </div>
+                {/* <button
+      onClick={() => {
+        // Add your logic here for handling the button click action, if needed
+      }}
+      className={`p-2 rounded-lg ${isDisabled ? 'bg-black text-white cursor-not-allowed' : 'bg-white text-black'}`}
+      disabled={isDisabled}
+    >
+      Place Bid
+    </button> */}
       
-               {
-                userEmail == email?
-                <div className=" btn-disabled  text-center  text-xl rounded-lg bg-slate-300 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
+             <div>
+                  {
+                userEmail === email?
+                <div className=" btn-disabled cursor-not-allowed text-center  text-xl rounded-lg bg-slate-300 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
               
                 <button  >Bid on the project</button>
                 </div>
@@ -144,6 +159,7 @@ const JobDetailsSet = () => {
                 </div>
 
                }
+             </div>
    
 
             </form>
