@@ -24,7 +24,7 @@ const MyJobSet = () => {
            
 
        
-    },[email,job])
+    },[email,job]);
     // console.log(jobCard);
    
     return (

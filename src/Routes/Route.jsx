@@ -11,6 +11,7 @@ import JobDetailsSet from "../Pages/JobDetails/JobDetailsSet";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 
 import MyBidsSet from "../Pages/MyBids/MyBidsSet";
+import BidRequestSet from "../Pages/BidRequest/BidRequestSet";
 
 
 
@@ -57,6 +58,8 @@ const router = createBrowserRouter([
         },
         {
            path:'/request',
+           element:<PrivateRoute><BidRequestSet></BidRequestSet></PrivateRoute>,
+           loader: () => fetch('http://localhost:5000/bids'),
         },
         {
           path:'/login',
