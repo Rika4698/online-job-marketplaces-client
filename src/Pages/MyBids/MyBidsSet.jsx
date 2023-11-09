@@ -18,6 +18,7 @@ const MyBidsSet = () => {
             setBidCard(findBid);
     },[email,bid]);
     // console.log(bidCard.length);
+   
     
     return (
         <div>
@@ -26,7 +27,7 @@ const MyBidsSet = () => {
             <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">Not added any bid request...</h1>
             :
                        <div className="overflow-x-auto">
-  <table className="table table-xs ml-6 mt-6 ">
+  <table className="table table-xs  mt-6 ">
     {/* head */}
     <thead className="">
       <tr className="px-10">
@@ -41,7 +42,7 @@ const MyBidsSet = () => {
     <tbody>
    
     {
-     bidCard.map(bids => <MyBids key={bids._id} bids={bids}></MyBids>)
+     bidCard.map(bids => <MyBids key={bids._id} bids={bids} ></MyBids>)
     }
       
     

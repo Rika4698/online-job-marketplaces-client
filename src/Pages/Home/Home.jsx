@@ -11,6 +11,7 @@ import { useState } from "react";
 import BrowseCategory from "../BrowseCategory/BrowseCategory";
 import UpcomingJob from "../UpcomingJob/UpcomingJob";
 import Testimonials from "../Testimonials/Testimonials";
+import JobDetails from "../JobDetails/JobDetails";
 // import UpdateData from "../UpdateData/UpdateData";
 // import MyJobSet from "../MyJob/MyJobSet";
 
@@ -53,6 +54,7 @@ const Home = () => {
       </Tabs>
       <UpcomingJob></UpcomingJob>
       <Testimonials></Testimonials>
+      <JobDetails></JobDetails>
     </div>
             
            

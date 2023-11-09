@@ -18,6 +18,53 @@ const BidRequestSet = () => {
             setBidCard(findBid);
     },[email,bid]);
     // console.log(bidCard.length);
+    const handleConfirm = id => {
+        fetch(`http://localhost:5000/bids/${id}`,{
+            method:'PATCH',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status: 'confirm'})
+        })
+        .then (res => res.json())
+        .then( data => {
+            console.log(data);
+            if(data.modifiedCount > 0)
+            {
+                const remaining = bidCard.filter(bids => bids._id !== id);
+                const updated = bidCard.find(bids => bids._id === id);
+                updated.status = 'confirm'
+                const newBid =[updated, ...remaining];
+                setBidCard(newBid);
+            }
+        }
+
+        )
+    }
+
+    const handleRejected = id => {
+        fetch(`http://localhost:5000/bids/${id}`,{
+            method:'PATCH',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status: 'cancel'})
+        })
+        .then (res => res.json())
+        .then( data => {
+            console.log(data);
+            if(data.modifiedCount > 0)
+            {
+                const remaining = bidCard.filter(bids => bids._id !== id);
+                const updated = bidCard.find(bids => bids._id === id);
+                updated.status = 'cancel'
+                const newBid =[updated, ...remaining];
+                setBidCard(newBid);
+            }
+        }
+
+        )
+    }
     
     return (
         <div>
@@ -43,7 +90,7 @@ const BidRequestSet = () => {
     <tbody>
    
     {
-     bidCard.map(bids => <BidRequest key={bids._id} bids={bids}></BidRequest>)
+     bidCard.map(bids => <BidRequest key={bids._id} bids={bids} handleConfirm={handleConfirm} handleRejected={handleRejected}></BidRequest>)
     }
       
     
