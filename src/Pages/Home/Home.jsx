@@ -10,6 +10,7 @@ import 'react-tabs/style/react-tabs.css';
 import { useState } from "react";
 import BrowseCategory from "../BrowseCategory/BrowseCategory";
 import UpcomingJob from "../UpcomingJob/UpcomingJob";
+import Testimonials from "../Testimonials/Testimonials";
 // import UpdateData from "../UpdateData/UpdateData";
 // import MyJobSet from "../MyJob/MyJobSet";
 
@@ -51,6 +52,7 @@ const Home = () => {
         ))}
       </Tabs>
       <UpcomingJob></UpcomingJob>
+      <Testimonials></Testimonials>
     </div>
             
            

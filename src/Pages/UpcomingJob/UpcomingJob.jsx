@@ -22,7 +22,7 @@ const UpcomingJob = () => {
   </div>
 </div>
 <div className="card h-[300px] bg-base-100 shadow-xl  chat-image">
-  <figure className="h-[225px]"><img src="https://i.ibb.co/GskfxtS/wepik-export-202311090837141s-FD.png" alt="" /></figure>
+  <figure className="h-[164px] xl:h-[223px]"><img src="https://i.ibb.co/GskfxtS/wepik-export-202311090837141s-FD.png" alt="" /></figure>
   <div className=" flex items-center justify-center ">
     <h2 className="card-title mt-4 text-2xl font-bold text-cyan-700">AI Services</h2>
     {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
