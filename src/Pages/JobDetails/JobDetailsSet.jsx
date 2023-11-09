@@ -1,5 +1,5 @@
 // import {  useState } from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {  useLoaderData, useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider";
 import swal from "sweetalert";
@@ -18,7 +18,10 @@ const JobDetailsSet = () => {
     // const [isDisabled, setIsDisabled] = useState(userEmail === email);
     // const bids = user.email == email;
     // console.log(bids);
+    useEffect(()=>{
 
+        document.title = "Work Wave|jobs details";
+       },[])
     const handleBid = event => {
         event?.preventDefault();
        

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Hook/AuthProvider";
 import swal from "sweetalert";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,7 +14,10 @@ const AddJob = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
     // console.log(email);
-   
+    useEffect(()=>{
+
+        document.title = "Work Wave|Add Job";
+       },[])
 
     const handleJob = event => {
         event.preventDefault();

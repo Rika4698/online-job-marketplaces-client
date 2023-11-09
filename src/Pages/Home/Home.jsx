@@ -7,7 +7,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 
 // import BrowseCategory from "../BrowseCategory/BrowseCategory";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BrowseCategory from "../BrowseCategory/BrowseCategory";
 import UpcomingJob from "../UpcomingJob/UpcomingJob";
 import Testimonials from "../Testimonials/Testimonials";
@@ -25,7 +25,10 @@ const Home = () => {
    const getFilteredJobs = () => {
     return job.filter((jobs) => jobs.category === categoryData[selectedTab]);
   };
-  
+     useEffect(()=>{
+
+      document.title = "Work Wave|Home";
+     },[])
     
     return (
         <div>

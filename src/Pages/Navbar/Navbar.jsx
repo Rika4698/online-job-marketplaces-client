@@ -26,6 +26,8 @@ const Navbar = () => {
               isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-lg"
            }>Home</NavLink></li>
         
+        {
+          !user? "": <> 
           <li><NavLink to="/add-job"
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
@@ -43,6 +45,8 @@ const Navbar = () => {
               isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
            }>Bid
            Requests</NavLink></li>
+           </>
+}
          
         {/* <li><a>Item 1</a></li>
         <li>
@@ -67,7 +71,8 @@ const Navbar = () => {
             className={({ isActive, isPending }) =>
               isPending ? "pending " : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-lg"
            }>Home</NavLink></li>
-    
+    {
+      !user? "": <> 
       <li><NavLink to="/add-job"
             className={({ isActive, isPending }) =>
               isPending ? "pending " : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
@@ -85,7 +90,9 @@ const Navbar = () => {
               isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-semibold text-black text-base"
            }>Bid
            Requests</NavLink></li>
-     
+           </>
+}
+
       {/* <li tabIndex={0}>
         <details>
           <summary>Parent</summary>

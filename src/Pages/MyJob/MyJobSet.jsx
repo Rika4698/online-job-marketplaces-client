@@ -21,7 +21,10 @@ const MyJobSet = () => {
         
             setJobCard(findJob);
 
-           
+          
+
+                document.title = "Work Wave|My Job";
+             
 
        
     },[email,job]);

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../Hook/AuthProvider";
@@ -10,6 +10,10 @@ const Login = () => {
 
   const {signIn} = useContext(AuthContext);
   const {googleSignIn} = useContext(AuthContext);
+  useEffect(()=>{
+
+    document.title = "Work Wave|Login";
+   },[])
   const handleGoogleAccount = () => {
       googleSignIn().then ((result) => {
           console.log(result.user);

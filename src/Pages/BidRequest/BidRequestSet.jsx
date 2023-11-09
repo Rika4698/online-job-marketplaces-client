@@ -16,6 +16,9 @@ const BidRequestSet = () => {
         // console.log(findJob);
         
             setBidCard(findBid);
+            
+                document.title = "Work Wave|Bid Requests";
+              
     },[email,bid]);
     // console.log(bidCard.length);
     const handleConfirm = id => {
@@ -72,6 +75,8 @@ const BidRequestSet = () => {
             bidCard.length == 0 ?
             <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">Not added any bid request...</h1>
             :
+            <div className="bg-pink-50">
+                        <h1 className="text-center font-bold text-4xl text-orange-400 pt-8 mb-2">My Bids</h1>
                        <div className="overflow-x-auto">
   <table className="table table-xs  mt-6 ">
     {/* head */}
@@ -98,6 +103,7 @@ const BidRequestSet = () => {
     
     
   </table>
+</div>
 </div>
 }
           

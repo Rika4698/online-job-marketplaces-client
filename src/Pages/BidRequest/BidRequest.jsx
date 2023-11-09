@@ -24,15 +24,15 @@ const BidRequest = ({bids,handleConfirm,handleRejected}) => {
         <td className="text-base font-medium text-slate-500">{deadline}</td>
         <td className="text-base font-medium text-slate-500">{price}</td>
         <th>
-        <button className={`btn capitalize btn-xs ${status === 'confirm' ? 'bg-green-400' : status === 'cancel' ? 'bg-red-400' : ''}`}>
-  {status === 'confirm' ? 'In Progress'  : status === 'cancel' ? 'Canceled' : 'Pending'}
+        <button className={`btn capitalize btn-xs ${status === 'confirm' ? 'bg-green-400' : status === 'cancel' ? 'bg-red-400' :status === 'complete' ?"bg-green-800 text-white": ''}`}>
+  {status === 'confirm' ? 'In Progress'  : status === 'cancel' ? 'Canceled' : status === 'complete' ?  'Complete':'Pending'}
 </button>
         </th>
         {
-  status === 'confirm' || status === 'cancel' ? (
+  status === 'confirm' || status === 'cancel'||status === 'complete' ? (
     <ProgressBar
-      percent={100}
-      filledBackground={status === 'confirm' ? 'linear-gradient(to right, #fefb72, green)' : 'linear-gradient(to right, #fefb72, red)'}
+      percent={status === 'confirm' ? 80 :status === 'cancel' ? 100 :status === 'complete' ? 100 :''}
+      filledBackground={status === 'confirm' ? 'linear-gradient(to right, #fefb72, green)' :status === 'cancel' ? 'linear-gradient(to right, #fefb72, red )':status === 'complete' ?'linear-gradient(to right, #fefb72, green)':''}
     />
   ) : (
     <th className="">
