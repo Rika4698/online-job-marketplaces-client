@@ -18,6 +18,29 @@ const MyBidsSet = () => {
             setBidCard(findBid);
     },[email,bid]);
     // console.log(bidCard.length);
+    const handleComplete = id => {
+        fetch(`http://localhost:5000/bids/${id}`,{
+            method:'PATCH',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status: 'complete'})
+        })
+        .then (res => res.json())
+        .then( data => {
+            console.log(data);
+            if(data.modifiedCount > 0)
+            {
+                const remaining = bidCard.filter(bids => bids._id !== id);
+                const updated = bidCard.find(bids => bids._id === id);
+                updated.status = 'complete'
+                const newBid =[updated, ...remaining];
+                setBidCard(newBid);
+            }
+        }
+
+        )
+    }
    
     
     return (
@@ -42,7 +65,7 @@ const MyBidsSet = () => {
     <tbody>
    
     {
-     bidCard.map(bids => <MyBids key={bids._id} bids={bids} ></MyBids>)
+     bidCard.map(bids => <MyBids key={bids._id} bids={bids} handleComplete={handleComplete} ></MyBids>)
     }
       
     
