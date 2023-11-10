@@ -1,7 +1,8 @@
 // import { useContext } from "react";
 // import { AuthContext } from "../../Hook/AuthProvider";
 
-import { useEffect } from "react";
+
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -11,10 +12,7 @@ const UpdateData = () => {
     // const email = user?.email;
     const job = useLoaderData();
 const{_id, name, image, email,deadline, category, description,minPrice,maxPrice } = job;
-useEffect(()=>{
 
-    document.title = `Work Wave|update/${_id}`;
-   },[])
     const handleUpdate = event => {
         event.preventDefault();
         // const formattedDeadline = moment(deadline).format('MMMM Do YYYY, h:mm:ss a');
@@ -62,6 +60,9 @@ useEffect(()=>{
     }
     return (
         <div>
+            <Helmet>
+                <title>Work Wave|update/{_id}</title>
+            </Helmet>
             <div className="bg-[rgb(251,243,204)] p-24">
             <h2 className="text-5xl font-extrabold text-center text-purple-300  mb-10">Update Job: {name}</h2>
             <form onSubmit={handleUpdate} > 

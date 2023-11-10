@@ -1,8 +1,9 @@
 // import {  useState } from "react";
-import { useContext, useEffect } from "react";
+import { useContext} from "react";
 import {  useLoaderData, useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet";
 // import Swal from "sweetalert2";
 
 
@@ -13,15 +14,13 @@ const JobDetailsSet = () => {
     const{user} = useContext(AuthContext);
     const userEmail = user?.email;
     const job =useLoaderData();
+   
     const{ name, image,email, deadline, description,minPrice,maxPrice } = job;
     const paragraphs = description.split('\n');
     // const [isDisabled, setIsDisabled] = useState(userEmail === email);
     // const bids = user.email == email;
     // console.log(bids);
-    useEffect(()=>{
-
-        document.title = "Work Wave|jobs details";
-       },[])
+    
     const handleBid = event => {
         event?.preventDefault();
        
@@ -36,9 +35,10 @@ const JobDetailsSet = () => {
         const userEmail = form.userEmail.value;
         const email  = form.email.value;
         // console.log(deadline);
+        const status = 'pending';
       
         
-        const myBid = { name, price, email,deadline, userEmail }
+        const myBid = { name, price, email,deadline, userEmail,status }
 
         console.log(myBid);
         //send data to the server
@@ -80,9 +80,12 @@ const JobDetailsSet = () => {
    
     return (
         <div>
+            <Helmet>
+                <title>Work Wave| jobs details/{job._id}</title>
+            </Helmet>
             <div className="card my-4 lg:card-side lg:mx-10 lg:my-4 bg-base-100 ">
   <figure className=" w-auto lg:rounded-none  lg:w-[800px] lg:h-[250px]"><img src={image} alt=""/></figure>
-  <div className="card-body bg-slate-200">
+  <div className="card-body bg-slate-200 ">
     <h2 className="card-title font-bold text-3xl">{name}</h2>    
         
     <div className="flex gap-2">

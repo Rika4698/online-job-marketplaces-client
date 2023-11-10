@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Hook/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import BidRequest from "./BidRequest";
+import { Helmet } from "react-helmet-async";
 
 
 const BidRequestSet = () => {
@@ -9,6 +10,7 @@ const BidRequestSet = () => {
     const email = user?.email;
    
     const bid = useLoaderData();
+    console.log(bid);
     const[bidCard,setBidCard] = useState([]);
     
     useEffect(() => {
@@ -17,9 +19,10 @@ const BidRequestSet = () => {
         
             setBidCard(findBid);
             
-                document.title = "Work Wave|Bid Requests";
+                
               
     },[email,bid]);
+    
     // console.log(bidCard.length);
     const handleConfirm = id => {
         fetch(`http://localhost:5000/bids/${id}`,{
@@ -27,7 +30,7 @@ const BidRequestSet = () => {
             headers:{
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({status: 'confirm'})
+            body: JSON.stringify({status: 'in progress'})
         })
         .then (res => res.json())
         .then( data => {
@@ -36,7 +39,7 @@ const BidRequestSet = () => {
             {
                 const remaining = bidCard.filter(bids => bids._id !== id);
                 const updated = bidCard.find(bids => bids._id === id);
-                updated.status = 'confirm'
+                updated.status = 'in progress'
                 const newBid =[updated, ...remaining];
                 setBidCard(newBid);
             }
@@ -51,7 +54,7 @@ const BidRequestSet = () => {
             headers:{
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({status: 'cancel'})
+            body: JSON.stringify({status: 'rejected'})
         })
         .then (res => res.json())
         .then( data => {
@@ -60,7 +63,7 @@ const BidRequestSet = () => {
             {
                 const remaining = bidCard.filter(bids => bids._id !== id);
                 const updated = bidCard.find(bids => bids._id === id);
-                updated.status = 'cancel'
+                updated.status = 'rejected'
                 const newBid =[updated, ...remaining];
                 setBidCard(newBid);
             }
@@ -71,12 +74,15 @@ const BidRequestSet = () => {
     
     return (
         <div>
+            <Helmet>
+                <title>Work Wave|Bid Requests</title>
+            </Helmet>
            {
             bidCard.length == 0 ?
             <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">Not added any bid request...</h1>
             :
             <div className="bg-pink-50">
-                        <h1 className="text-center font-bold text-4xl text-orange-400 pt-8 mb-2">My Bids</h1>
+                        <h1 className="text-center font-bold text-4xl text-orange-400 pt-8 mb-2">Bids Request</h1>
                        <div className="overflow-x-auto">
   <table className="table table-xs  mt-6 ">
     {/* head */}

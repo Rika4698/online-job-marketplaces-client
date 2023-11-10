@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 
 const Registration = () => {
@@ -10,10 +11,7 @@ const Registration = () => {
     const {googleSignIn} = useContext(AuthContext);
     const {createUser} = useContext(AuthContext);
     // const {userProfile} = useContext(AuthContext);
-    useEffect(()=>{
-
-      document.title = "Work Wave|Registration";
-     },[])
+   
     const handleGoogleAccount = () => {
         googleSignIn().then ((result) => {
             console.log(result.user);
@@ -82,6 +80,9 @@ const Registration = () => {
     };
     return (
         <div>
+          <Helmet>
+            <title>Work Wave|Registration</title>
+          </Helmet>
              <div className=" bg-gradient-to-r from-violet-50 to-blue-200">
   <div className="hero-content flex-col lg:flex">
     

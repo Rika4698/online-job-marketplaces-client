@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider";
 import MyJob from "./MyJob";
+import { Helmet } from "react-helmet-async";
 // import Swal from "sweetalert2";
 
 
@@ -23,7 +24,7 @@ const MyJobSet = () => {
 
           
 
-                document.title = "Work Wave|My Job";
+               
              
 
        
@@ -32,6 +33,9 @@ const MyJobSet = () => {
    
     return (
         <div>
+            <Helmet>
+                <title>Work Wave|My Job</title>
+            </Helmet>
              {
             jobCard.length == 0 ?
             <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">No added any job post...</h1>

@@ -12,7 +12,7 @@ const BrowseCategory = ({job}) => {
     <img src={image} alt="" className="rounded-xl rounded-b-none w-[400px] h-[230px]  " />
   {/* </figure> */}
   <div className="card-body items-center text-center">
-    <h2 className="card-title font-bold">{name}</h2>
+    <h2 className="card-title font-bold ">{name}</h2>
     <div className=" flex-row  lg:flex gap-2">
     <h3 className="font-bold">Application deadline: </h3>
     <h3>{deadline}</h3>

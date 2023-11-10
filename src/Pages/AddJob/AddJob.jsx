@@ -1,7 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Hook/AuthProvider";
 import swal from "sweetalert";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 // import { Link } from "react-router-dom";
 // import moment from 'moment';
 // import Swal from "sweetalert2";
@@ -14,10 +15,7 @@ const AddJob = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
     // console.log(email);
-    useEffect(()=>{
-
-        document.title = "Work Wave|Add Job";
-       },[])
+    
 
     const handleJob = event => {
         event.preventDefault();
@@ -67,6 +65,9 @@ const AddJob = () => {
    
     return (
         <div>
+            <Helmet>
+                <title>Work Wave|Add Job</title>
+            </Helmet>
             <div className="bg-[rgb(212,251,233)] p-24">
             <h2 className="text-5xl font-extrabold text-center text-pink-400  mb-10">Add Job</h2>
             <form onSubmit={handleJob} > 
