@@ -40,7 +40,7 @@ const MyBidsSet = () => {
             headers:{
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({status: 'complete'})
+            body: JSON.stringify({status: 'complete'}),credentials:'include'
         })
         .then (res => res.json())
         .then( data => {

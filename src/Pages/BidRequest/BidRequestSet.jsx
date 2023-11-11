@@ -30,7 +30,7 @@ const BidRequestSet = () => {
             headers:{
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({status: 'in progress'})
+            body: JSON.stringify({status: 'in progress'}),credentials:'include'
         })
         .then (res => res.json())
         .then( data => {

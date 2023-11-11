@@ -30,10 +30,13 @@ const BidRequest = ({bids,handleConfirm,handleRejected}) => {
         </th>
         {
   status === 'in progress' || status === 'rejected'||status === 'complete' ? (
-    <ProgressBar
+    <div className="mt-2">
+    <ProgressBar 
       percent={status === 'in progress' ? 80 :status === 'rejected' ? 100 :status === 'complete' ? 100 :''}
       filledBackground={status === 'in progress' ? 'linear-gradient(to right, #fefb72, green)' :status === 'rejected' ? 'linear-gradient(to right, #fefb72, red )':status === 'complete' ?'linear-gradient(to right, #fefb72, green)':''}
+      status="active"
     />
+    </div>
   ) : (
     <th className="">
       <button onClick={() => handleConfirm(_id)} className="btn btn-xs bg-green-400 ">

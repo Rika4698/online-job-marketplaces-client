@@ -6,9 +6,9 @@ import Banner from "../Banner/Banner";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 
-// import BrowseCategory from "../BrowseCategory/BrowseCategory";
-import {  useState } from "react";
 import BrowseCategory from "../BrowseCategory/BrowseCategory";
+import {  useState } from "react";
+// import BrowseCategory from "../BrowseCategory/BrowseCategory";
 import UpcomingJob from "../UpcomingJob/UpcomingJob";
 import Testimonials from "../Testimonials/Testimonials";
 import { Helmet } from "react-helmet";

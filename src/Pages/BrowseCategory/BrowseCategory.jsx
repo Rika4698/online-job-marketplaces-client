@@ -5,6 +5,7 @@ const BrowseCategory = ({job}) => {
     const{_id,name,image,deadline, minPrice,maxPrice, description} = job || {};
     const paragraphs = description.split('\n');
     // console.log(paragraphs[0]);
+    
     return (
         <div>
            <div className="card h-[700px] bg-pink-50 ">

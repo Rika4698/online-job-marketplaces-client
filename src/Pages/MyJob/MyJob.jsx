@@ -28,7 +28,7 @@ const MyJob = ({cards,jobCard,setJobCard}) => {
           
           if (result.isConfirmed) {
               fetch(`http://localhost:5000/jobs/${_id}`, {
-                  method: 'DELETE',
+                  method: 'DELETE',credentials:'include'
                  
               })
                   .then(res => res.json())

@@ -44,7 +44,7 @@ const AddJob = () => {
             headers: {
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify(newJob)
+            body: JSON.stringify(newJob),credentials:'include'
         })
         .then(res => res.json())
         .then(data => {
@@ -137,8 +137,8 @@ const AddJob = () => {
                         </label>
                         <label className="input-group">
                         {/* <input type="text" name="category" placeholder="Category" className="input input-bordered w-full" /> */}
-                        <select name="category" className="select select-bordered join-item w-full "  >
-      <option className="text-slate-400"  disabled selected>Select</option>
+                        <select name="category" className="select select-bordered join-item w-full "  defaultValue= 'Select' >
+      <option className="text-slate-400"  disabled >Select</option>
       <option >Web Development</option>
       <option>Digital Marketing</option>
       <option>Graphics Design</option>

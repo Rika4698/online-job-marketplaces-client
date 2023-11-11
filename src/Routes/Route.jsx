@@ -25,13 +25,13 @@ const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>,
-            loader: () => fetch('http://localhost:5000/jobs'),
+            loader: () => fetch('http://localhost:5000/jobs',{credentials:'include'}),
             
         },
         {
            path:'/jobs/:id',
            element:<PrivateRoute><JobDetailsSet></JobDetailsSet></PrivateRoute>,
-           loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`),
+           loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`,{credentials:'include'}),
            
            
         },
@@ -42,24 +42,24 @@ const router = createBrowserRouter([
         {
             path:'/my-job',
             element:<PrivateRoute><MyJobSet></MyJobSet></PrivateRoute>,
-            loader: () => fetch('http://localhost:5000/jobs'),
+            loader: () => fetch('http://localhost:5000/jobs',{credentials:'include'}),
         },
         {
           path:'/update/:id',
           element:<UpdateData></UpdateData>,
-          loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`),
+          loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`,{credentials:'include'}),
 
         },
         {
            path:'/my-bids',
            element:<PrivateRoute><MyBidsSet></MyBidsSet></PrivateRoute>,
-           loader: () => fetch('http://localhost:5000/my-bids'),
+           loader: () => fetch('http://localhost:5000/my-bids',{credentials:'include'}),
 
         },
         {
            path:'/request',
            element:<PrivateRoute><BidRequestSet></BidRequestSet></PrivateRoute>,
-           loader: () => fetch('http://localhost:5000/bids'),
+           loader: () => fetch('http://localhost:5000/bids',{credentials:'include'}),
         },
         {
           path:'/login',

@@ -15,11 +15,13 @@ const JobDetailsSet = () => {
     const userEmail = user?.email;
     const job =useLoaderData();
    
-    const{ name, image,email, deadline, description,minPrice,maxPrice } = job;
+    const{ name, image,email, deadline, description,minPrice,maxPrice } = job ||{};
     const paragraphs = description.split('\n');
     // const [isDisabled, setIsDisabled] = useState(userEmail === email);
     // const bids = user.email == email;
     // console.log(bids);
+    const isBidButtonDisabled = new Date(deadline) < Date.now();
+   
     
     const handleBid = event => {
         event?.preventDefault();
@@ -47,7 +49,7 @@ const JobDetailsSet = () => {
             headers: {
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify(myBid)
+            body: JSON.stringify(myBid),credentials:'include'
         })
         .then(res => res.json())
         .then(data => {
@@ -66,14 +68,6 @@ const JobDetailsSet = () => {
         })
 
     }
-   
-   
-   
-   
-   
-   
-   
-   
    
    
    
@@ -163,11 +157,18 @@ const JobDetailsSet = () => {
                 <button  >Bid on the project</button>
                 </div>
                 :
-                <div className="btn text-center  text-xl rounded-lg bg-lime-500 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
-              
-                <button  >Bid on the project</button>
-                </div>
-
+                
+                isBidButtonDisabled ? (
+                    <div className=" btn-disabled cursor-not-allowed text-center  text-xl rounded-lg bg-slate-300 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
+                      <button disabled>Bid on the project</button>
+                      <h3 className="text-base text-red-500 mt-6">job’s deadline is crossed </h3>
+                    </div>
+                  ) : (
+                    <div className="btn text-center  text-xl rounded-lg bg-lime-500 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
+                      <button>Bid on the project</button>
+                    </div>
+                  )
+                
                }
              </div>
    
