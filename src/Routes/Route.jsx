@@ -25,13 +25,13 @@ const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>,
-            loader: () => fetch('http://localhost:5000/jobs',{credentials:'include'}),
+            loader: () => fetch('https://online-job-marketplaces-server.vercel.app/jobs'),
             
         },
         {
            path:'/jobs/:id',
            element:<PrivateRoute><JobDetailsSet></JobDetailsSet></PrivateRoute>,
-           loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`,{credentials:'include'}),
+           loader: ({params}) => fetch(`https://online-job-marketplaces-server.vercel.app/jobs/${params.id}`,{credentials:'include'}),
            
            
         },
@@ -40,26 +40,26 @@ const router = createBrowserRouter([
             element:<PrivateRoute><AddJob></AddJob></PrivateRoute>,
         },
         {
-            path:'/my-job',
+            path:'/my-jobs/:email',
             element:<PrivateRoute><MyJobSet></MyJobSet></PrivateRoute>,
-            loader: () => fetch('http://localhost:5000/jobs',{credentials:'include'}),
+            // loader: ({params}) => fetch(`https://online-job-marketplaces-server.vercel.app/my-jobs/${params.email}`,{credentials:'include'}),
         },
         {
           path:'/update/:id',
           element:<UpdateData></UpdateData>,
-          loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`,{credentials:'include'}),
+          loader: ({params}) => fetch(`https://online-job-marketplaces-server.vercel.app/jobs/${params.id}`,{credentials:'include'}),
 
         },
         {
            path:'/my-bids',
            element:<PrivateRoute><MyBidsSet></MyBidsSet></PrivateRoute>,
-           loader: () => fetch('http://localhost:5000/my-bids',{credentials:'include'}),
+           loader: () => fetch('https://online-job-marketplaces-server.vercel.app/my-bids',{credentials:'include'}),
 
         },
         {
            path:'/request',
            element:<PrivateRoute><BidRequestSet></BidRequestSet></PrivateRoute>,
-           loader: () => fetch('http://localhost:5000/bids',{credentials:'include'}),
+           loader: () => fetch('https://online-job-marketplaces-server.vercel.app/bids',{credentials:'include'}),
         },
         {
           path:'/login',

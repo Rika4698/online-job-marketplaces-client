@@ -22,7 +22,7 @@ const MyBids = ({ bids,handleComplete }) => {
         </td>
         <td className="text-base font-medium text-slate-500">{deadline}</td>
         <th>
-        <button className={`btn capitalize btn-xs  ${status === 'in progress' ? 'bg-green-400' : status === 'rejected' ? 'bg-red-400' : status === 'complete' ?"bg-green-800 text-white":''}`}>
+        <button className={` capitalize btn-xs  ${status === 'in progress' ? 'bg-green-400' : status === 'rejected' ? 'bg-red-400' : status === 'complete' ?"bg-green-800 text-white":'bg-slate-300'}`}>
   {status }
 </button>
         </th>

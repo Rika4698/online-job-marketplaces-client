@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const MyJob = ({cards,jobCard,setJobCard}) => {
+const MyJob = ({cards,jobCard,setJobCard,value }) => {
     // const { user } = useContext(AuthContext);
     // console.log(jobCard);
+  
     const {_id, name, image, deadline, category, description,minPrice,maxPrice } = cards || {};
     const paragraphs = description.split('\n');
 
@@ -27,7 +28,7 @@ const MyJob = ({cards,jobCard,setJobCard}) => {
           console.log(result);
           
           if (result.isConfirmed) {
-              fetch(`http://localhost:5000/jobs/${_id}`, {
+              fetch(`https://online-job-marketplaces-server.vercel.app/jobs/${_id}`, {
                   method: 'DELETE',credentials:'include'
                  
               })

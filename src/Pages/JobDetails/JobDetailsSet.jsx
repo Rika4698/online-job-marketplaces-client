@@ -44,7 +44,7 @@ const JobDetailsSet = () => {
 
         console.log(myBid);
         //send data to the server
-        fetch('http://localhost:5000/bids',{
+        fetch('https://online-job-marketplaces-server.vercel.app/bids',{
             method:'POST',
             headers: {
                 'content-type' : 'application/json'

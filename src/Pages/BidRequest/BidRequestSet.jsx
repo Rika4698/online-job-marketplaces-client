@@ -25,7 +25,7 @@ const BidRequestSet = () => {
     
     // console.log(bidCard.length);
     const handleConfirm = id => {
-        fetch(`http://localhost:5000/bids/${id}`,{
+        fetch(`https://online-job-marketplaces-server.vercel.app/bids/${id}`,{
             method:'PATCH',
             headers:{
                 'content-type': 'application/json'
@@ -49,12 +49,12 @@ const BidRequestSet = () => {
     }
 
     const handleRejected = id => {
-        fetch(`http://localhost:5000/bids/${id}`,{
+        fetch(`https://online-job-marketplaces-server.vercel.app/bids/${id}`,{
             method:'PATCH',
             headers:{
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({status: 'rejected'})
+            body: JSON.stringify({status: 'rejected'}),credentials:'include'
         })
         .then (res => res.json())
         .then( data => {
@@ -62,6 +62,7 @@ const BidRequestSet = () => {
             if(data.modifiedCount > 0)
             {
                 const remaining = bidCard.filter(bids => bids._id !== id);
+                console.log(remaining);
                 const updated = bidCard.find(bids => bids._id === id);
                 updated.status = 'rejected'
                 const newBid =[updated, ...remaining];

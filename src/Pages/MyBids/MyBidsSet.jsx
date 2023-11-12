@@ -35,7 +35,7 @@ const MyBidsSet = () => {
 
     // console.log(bidCard.length);
     const handleComplete = id => {
-        fetch(`http://localhost:5000/bids/${id}`,{
+        fetch(`https://online-job-marketplaces-server.vercel.app/bids/${id}`,{
             method:'PATCH',
             headers:{
                 'content-type': 'application/json'

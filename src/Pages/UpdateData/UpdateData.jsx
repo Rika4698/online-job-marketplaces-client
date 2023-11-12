@@ -35,7 +35,7 @@ const{_id, name, image, email,deadline, category, description,minPrice,maxPrice 
 
         // console.log(updateJob);
         //send data to the server
-        fetch(`http://localhost:5000/jobs/${_id}`,{
+        fetch(`https://online-job-marketplaces-server.vercel.app/jobs/${_id}`,{
             method:'PUT',
             headers: {
                 'content-type' : 'application/json'

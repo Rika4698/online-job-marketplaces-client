@@ -39,7 +39,7 @@ const AddJob = () => {
 
         // console.log(newJob);
         //send data to the server
-        fetch('http://localhost:5000/jobs',{
+        fetch('https://online-job-marketplaces-server.vercel.app/jobs',{
             method:'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -57,7 +57,7 @@ const AddJob = () => {
                 icon:'success',
             })
             }
-            navigate(location?.state?location.state :'/my-job' )
+            navigate(location?.state?location.state :`/my-jobs/${user.email}` )
 
         })
 

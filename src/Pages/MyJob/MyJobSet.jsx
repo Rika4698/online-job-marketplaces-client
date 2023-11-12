@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider";
 import MyJob from "./MyJob";
 import { Helmet } from "react-helmet-async";
@@ -7,28 +7,35 @@ import { Helmet } from "react-helmet-async";
 
 
 const MyJobSet = () => {
+    
     const { user } = useContext(AuthContext);
-    const email = user?.email;
-    const job = useLoaderData();
-    const[jobCard,setJobCard] = useState([]);
+    const userEmail = user?.email;
    
-    // const[jobs,setJobs] = useState(job);
+    const{email}=useParams();
+    console.log(email);
+    const[jobCard,setJobCard] = useState([]);
+    const[job,setJob] = useState([]);
+   useEffect(()=>{
+    fetch(`https://online-job-marketplaces-server.vercel.app/my-jobs/${email}`,{credentials:'include'})
+    .then(res=>res.json())
+    .then(data=>setJob(data))
+   },[email])
+   
     // console.log(jobs);
     // const {email} = useParams();
     // console.log(email);
     useEffect(() => {
-        const findJob = job.filter((jobs) => jobs.email == email);
-        // console.log(findJob);
         
-            setJobCard(findJob);
+         const findJob = job && job?.filter((jobs) => jobs.email == userEmail);
+    //    console.log(findJob);
+       
+           setJobCard(findJob);
+         
+           
 
-          
-
-               
-             
 
        
-    },[email,job]);
+    },[userEmail,job]);
     // console.log(jobCard);
    
     return (
@@ -37,7 +44,7 @@ const MyJobSet = () => {
                 <title>Work Wave|My Job</title>
             </Helmet>
              {
-            jobCard.length == 0 ?
+           jobCard && jobCard?.length == 0 ?
             <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">No added any job post...</h1>
             :
             <div>
@@ -46,7 +53,7 @@ const MyJobSet = () => {
             <div >
             {/* className="grid grid-cols-1 ml-16 pb-12 pt-20   md:grid-cols-2  lg:grid-cols-3  mr-6 gap-8"> */}
             {
-            jobCard.map(cards => <MyJob key={cards._id} cards={cards}  jobCard={jobCard} setJobCard={setJobCard}></MyJob>
+          jobCard &&  jobCard?.map(cards => <MyJob key={cards._id} cards={cards}  jobCard={jobCard} setJobCard={setJobCard}></MyJob>
                 )
             }
              </div>
