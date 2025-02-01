@@ -15,11 +15,21 @@ const Login = () => {
   const handleGoogleAccount = () => {
       googleSignIn().then ((result) => {
           console.log(result.user);
-           navigate(location?.state?location.state :'/' )
+          
+          swal({
+        
+            text: "Google login successfully",
+            icon: "success",
+            
+          })
+          .then(() => {
+           navigate(location?.state?location.state :'/' ) })
       })
       
   };
   const[errormessage, setErrorMessage] =useState("");
+
+
   const handleLogin = e =>{
     e.preventDefault ();
     const form = new FormData(e.currentTarget);
@@ -39,8 +49,8 @@ signIn(email,password)
         text: "Login successfully",
         icon: "success",
         
-      })
-      navigate(location?.state?location.state :'/' )
+      }).then(() => {
+        navigate(location?.state?location.state :'/' ) })
 })
 .catch((err) => {
     console.log(err);
@@ -57,6 +67,7 @@ signIn(email,password)
 });
 
 }
+e.target.reset()
 }
     return (
         <div>

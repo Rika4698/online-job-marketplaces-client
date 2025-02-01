@@ -15,14 +15,30 @@ const JobDetailsSet = () => {
     const userEmail = user?.email;
     const job =useLoaderData();
    
-    const{ name, image,email, deadline, description,minPrice,maxPrice } = job ||{};
-    const paragraphs = description.split('\n');
+    const{ _id,name, image,email, deadline,category, description,minPrice,maxPrice } = job ||{};
+    // const paragraphs = description.split('\n');
     // const [isDisabled, setIsDisabled] = useState(userEmail === email);
     // const bids = user.email == email;
     // console.log(bids);
-    const isBidButtonDisabled = new Date(deadline) < Date.now();
-   
+    // const todayDate = new Date(Date.now()).toDateString();
+    // const jobDate = new Date(deadline).toDateString();
+//     console.log(todayDate);
+// console.log(jobDate);
+    // const isBidButtonDisabled = jobDate >= todayDate;
+//    console.log(isBidButtonDisabled);
+const todayDate = new Date();
+todayDate.setHours(0, 0, 0, 0); // Set time to 00:00:00
+const jobDate = new Date(deadline);
+jobDate.setHours(0, 0, 0, 0); // Set time to 00:00:00
+
+const isBidButtonDisabled = jobDate.getTime() >= todayDate.getTime(); 
+const categoryColors = {
+    "Web Development": "#60A5FA", 
+    "Digital Marketing": "#34D399", 
+    "Graphics Design": "#FBBF24", 
     
+  };
+  
     const handleBid = event => {
         event?.preventDefault();
        
@@ -60,10 +76,11 @@ const JobDetailsSet = () => {
                 title: 'okay!',
                 text: ' Bid Successfully ',
                 icon:'success',
-            })
+            }).then(() => {
+            navigate(location?.state?location.state :'/my-bids' ) })
             }
            
-            navigate(location?.state?location.state :'/my-bids' )
+            
 
         })
 
@@ -75,9 +92,9 @@ const JobDetailsSet = () => {
     return (
         <div>
             <Helmet>
-                <title>Work Wave| jobs details/{job._id}</title>
+                <title>Work Wave| jobs details/{_id}</title>
             </Helmet>
-            <div className="card my-4 lg:card-side lg:mx-10 lg:my-4 bg-base-100 ">
+            {/* <div className="card my-4 lg:card-side lg:mx-10 lg:my-4 bg-base-100 ">
   <figure className=" w-auto lg:rounded-none  lg:w-[800px] lg:h-[250px]"><img src={image} alt=""/></figure>
   <div className="card-body bg-slate-200 ">
     <h2 className="card-title font-bold text-3xl">{name}</h2>    
@@ -93,88 +110,124 @@ const JobDetailsSet = () => {
       ))}
     
   </div>
-</div>
+</div> */}
 
-<div className="bg-[rgb(248,245,248)] p-24">
-            <h2 className="text-5xl font-extrabold text-center text-green-400  mb-10"> Place Your Bid</h2>
-            <form onSubmit={handleBid} > 
-                
-                <div className="md:flex mb-8">
-                <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text font-semibold text-base">Price:</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name="price" placeholder="Price" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2 ml-4">
-                    <label className="label">
-                            <span className="label-text font-semibold text-base">Deadline:</span>
-                        </label>
-                        <label className="input-group">
-                        <input type="text" placeholder="Deadline" className="input input-bordered w-full"  name="deadline"  />
-                        </label>
-                    </div>
-                    
-                   
-                </div>
-              
-               
-                <div className="md:flex mb-8">
-                <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text font-semibold text-base">Email:</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="email" name="userEmail" placeholder="UserEmail" value={userEmail} readOnly className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2 ml-4">
-                    <label className="label">
-                            <span className="label-text font-semibold text-base">Buyer Email:</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="email" name="email" placeholder="Email" value={email} readOnly className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                </div>
-                {/* <button
-      onClick={() => {
-        // Add your logic here for handling the button click action, if needed
-      }}
-      className={`p-2 rounded-lg ${isDisabled ? 'bg-black text-white cursor-not-allowed' : 'bg-white text-black'}`}
-      disabled={isDisabled}
-    >
-      Place Bid
-    </button> */}
+
+<div 
+      className="bg-white   md:rounded-lg p-6 max-w-xl mx-auto lg:max-w-2xl xl:max-w-4xl  "
       
-             <div>
-                  {
+    >
+      {/* Job Image */}
+      <img src={image} alt={name} className="w-full h-56 lg:h-64 xl:h-80 object-cover rounded-md mb-4 " />
+
+      {/* Job Title & Category */}
+      <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center my-3 xl:mx-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{name}</h2>
+        <span 
+          className="text-center px-3 py-1 rounded-full text-white text-sm font-semibold mt-2 "
+          style={{ backgroundColor: categoryColors[category] || "#607D8B" }} // Category Wise Color
+        >
+          {category}
+        </span>
+      </div>
+
+      {/* Salary & Deadline */}
+      <p className="text-blue-700 font-medium text-lg xl:mx-6">
+        💰 Salary range: <span className="font-semibold">{minPrice} - {maxPrice} TK</span>
+      </p>
+      <p className={`${isBidButtonDisabled? " text-green-700 ":"text-red-700 animate-bounce"} mt-1 font-medium text-lg xl:mx-6`}>📅 Deadline: <span className="font-semibold">{deadline}</span></p>
+
+      {/* Full Description */}
+      <p className=" xl:mx-6 text-blue-800 font-bold text-lg xl:text-xl mt-4 whitespace-pre-line leading-relaxed">Description: <span className="new block text-zinc-700 font-medium text-base pb-4 mt-2 xl:text-lg">
+        {description}</span>
+      </p>
+    </div>
+
+
+
+
+
+
+
+        <div className="flex justify-center items-center min-h-screen bg-white    ">
+  <form onSubmit={handleBid}  id="productForm" className="bg-sky-100  rounded-lg p-6 w-full max-w-2xl lg:max-w-4xl xl:max-w-6xl my-10 lg:my-14 shadow-md shadow-slate-400  ">
+    <h2 className="text-4xl font-bold text-sky-700 mb-6 text-center mt-8  ">Place Your Bid</h2>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-16 mx-4 ">
+     
+      <div className="mb-4">
+        <label htmlFor="productName" className="block text-base  font-semibold text-gray-600 mb-2 lg:text-xl ">Salary:</label>
+        <input
+         type="text" name="price" placeholder="Enter expected salary" 
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500  focus:outline-none" required
+        />
+      </div>
+
+      
+      <div className="mb-4">
+        <label htmlFor="photoURL" className="block text-base font-semibold text-gray-600 mb-2 lg:text-xl ">Deadline:</label>
+        <input
+         
+           type="text" placeholder="Deadline"   name="deadline"
+         
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500  focus:outline-none " required
+        />
+      </div>
+
+    
+      <div className="mb-4">
+        <label htmlFor="brandName" className="block text-base font-semibold text-gray-600 mb-2 lg:text-xl ">Email:</label>
+        <input
+          type="email" name="userEmail" placeholder="UserEmail" value={userEmail}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500    focus:outline-none" required
+        />
+      </div>
+
+     
+      <div className="mb-4">
+        <label htmlFor="brandURL" className="block text-base font-semibold text-gray-600 mb-2 lg:text-xl ">Employer Email:</label>
+        <input
+          type="email" name="email" placeholder="Email" value={email} readOnly 
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500  focus:outline-none"
+        />
+      </div>
+
+     
+
+     
+    </div>
+
+  
+    <div className="">
+    
+     
+
+      {
                 userEmail === email?
-                <div className=" btn-disabled cursor-not-allowed text-center  text-xl rounded-lg bg-slate-300 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
+                <div className=" btn-disabled cursor-not-allowed mt-6 mb-4 text-center">
               
-                <button  >Bid on the project</button>
+                <button 
+                className="w-60 lg:w-96 text-lg bg-gray-400  text-white font-medium py-2 px-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-110   " >Bid on the project</button>
                 </div>
                 :
                 
-                isBidButtonDisabled ? (
-                    <div className=" btn-disabled cursor-not-allowed text-center  text-xl rounded-lg bg-slate-300 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
-                      <button disabled>Bid on the project</button>
-                      <h3 className="text-base text-red-500 mt-6">job’s deadline is crossed </h3>
+                !isBidButtonDisabled ? (
+                    <div className=" btn-disabled cursor-not-allowed mt-6 mb-4 text-center">
+                      <button disabled 
+                className="w-60 lg:w-96 text-lg bg-gray-400  text-white font-medium py-2 px-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-110   ">Bid on the project</button>
+                      <h3 className="text-xl font-semibold text-red-500 mt-6">Job’s deadline is crossed. </h3>
                     </div>
                   ) : (
-                    <div className="btn text-center  text-xl rounded-lg bg-lime-500 w-40 h-8 text-white lg:ml-60 lg:w-96 xl:ml-96">
-                      <button>Bid on the project</button>
+                    <div className="mt-6 mb-4 text-center">
+                      <button  type="submit"
+                className="w-60 lg:w-96 text-lg bg-cyan-600  text-white font-medium py-2 px-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-110   " >Bid on the project</button>
                     </div>
                   )
                 
                }
-             </div>
-   
-
-            </form>
-        </div>  
+    </div>
+  </form>
+</div>  
         </div>
     );
 };

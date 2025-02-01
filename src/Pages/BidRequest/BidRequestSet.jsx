@@ -82,39 +82,45 @@ const BidRequestSet = () => {
             bidCard.length == 0 ?
             <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">Not added any bid request...</h1>
             :
-            <div className="bg-pink-50">
-                        <h1 className="text-center font-bold text-4xl text-orange-400 pt-8 mb-2">Bids Request</h1>
-                       <div className="overflow-x-auto">
-  <table className="table table-xs  mt-6 ">
-    {/* head */}
-    <thead className="">
-      <tr className="px-10">
-       
-        <th className="text-base font-bold text-violet-600 ">Job Title</th>
-        <th className="text-base font-bold text-violet-600 ">Email</th>
-        <th className="text-base font-bold text-violet-600 ">Deadline</th>
-        <th className="text-base font-bold text-violet-600 ">Price</th>
-        <th className="text-base font-bold text-violet-600 ">Status</th>
-        <th></th>
-        <th></th>
-      </tr>
+            <div className="">
+                        <h1 className="text-center font-bold text-4xl text-orange-700 pt-8 mb-2">Bids Request</h1>
+                        <div className="overflow-x-auto my-9">
+                        <table className="min-w-full divide-y divide-gray-200   ">
+    <thead className="bg-gray-50">
+        <tr>
+            <th scope="col" className="px-6 py-3 text-left text-base font-medium text-gray-600 uppercase tracking-wider">
+            Job Title
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-base font-medium text-gray-600 uppercase tracking-wider">
+            Email
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-base font-medium text-gray-600 uppercase tracking-wider">
+            Deadline
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-base font-medium text-gray-600 uppercase tracking-wider">
+            Salary
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-base font-medium text-gray-600 uppercase tracking-wider">
+            Status
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-base font-medium text-gray-600 uppercase tracking-wider">
+                
+            </th>
+        </tr>
     </thead>
-    <tbody>
-   
+    <tbody className="bg-white divide-y divide-gray-200">
+    
     {
      bidCard.map(bids => <BidRequest key={bids._id} bids={bids} handleConfirm={handleConfirm} handleRejected={handleRejected}></BidRequest>)
     }
-      
-    
+
     </tbody>
-    
-    
-  </table>
-</div>
+</table> 
+</div>  
 </div>
 }
           
-                    
+               
 
                   
         </div>

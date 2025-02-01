@@ -9,9 +9,10 @@ import MyJobSet from "../Pages/MyJob/MyJobSet";
 import UpdateData from "../Pages/UpdateData/UpdateData";
 import JobDetailsSet from "../Pages/JobDetails/JobDetailsSet";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
-
+import MyJob from "../Pages/MyJob/MyJob";
 import MyBidsSet from "../Pages/MyBids/MyBidsSet";
 import BidRequestSet from "../Pages/BidRequest/BidRequestSet";
+import About from "../Pages/About/About";
 
 
 
@@ -40,10 +41,18 @@ const router = createBrowserRouter([
             element:<PrivateRoute><AddJob></AddJob></PrivateRoute>,
         },
         {
-            path:'/my-jobs/:email',
+            path:'/my-jobs',
             element:<PrivateRoute><MyJobSet></MyJobSet></PrivateRoute>,
-            // loader: ({params}) => fetch(`https://online-job-marketplaces-server.vercel.app/my-jobs/${params.email}`,{credentials:'include'}),
+            loader: () => fetch('https://online-job-marketplaces-server.vercel.app/jobs',{credentials:'include'}),
+            // loader: ({params}) => fetch(`http://localhost:5000/my-jobs/${params.email}`,{credentials:'include'}),
         },
+        {
+          path:'/my-jobs/:id',
+          element:<PrivateRoute><MyJob></MyJob></PrivateRoute>,
+          loader: ({params}) => fetch(`https://online-job-marketplaces-server.vercel.app/my-jobs/${params.id}`,{credentials:'include'}),
+          
+          
+       },
         {
           path:'/update/:id',
           element:<UpdateData></UpdateData>,
@@ -60,6 +69,10 @@ const router = createBrowserRouter([
            path:'/request',
            element:<PrivateRoute><BidRequestSet></BidRequestSet></PrivateRoute>,
            loader: () => fetch('https://online-job-marketplaces-server.vercel.app/bids',{credentials:'include'}),
+        },
+        {
+          path:'/about',
+          element:<About></About>,
         },
         {
           path:'/login',

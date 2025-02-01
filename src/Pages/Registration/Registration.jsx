@@ -9,13 +9,20 @@ const Registration = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const {googleSignIn} = useContext(AuthContext);
-    const {createUser} = useContext(AuthContext);
+    const {createUser,logOut} = useContext(AuthContext);
     // const {userProfile} = useContext(AuthContext);
    
     const handleGoogleAccount = () => {
         googleSignIn().then ((result) => {
             console.log(result.user);
-            navigate(location?.state?location.state :'/' )
+            swal({
+        
+              text: "Google login successfully",
+              icon: "success",
+              
+            })
+            .then(() => {
+              navigate(location?.state?location.state :'/' ) })
         })
         .catch(error => {
             console.log(error);
@@ -24,6 +31,7 @@ const Registration = () => {
         
     };
     const[errormessage, setErrorMessage] =useState("");
+
     const handleRegisterForm = e => {
         e.preventDefault ();
         // console.log(e.currentTarget);
@@ -67,6 +75,7 @@ const Registration = () => {
                     icon: "success",
                   })
                   navigate("/login");
+                  logOut()
                 })
                
                 .catch(error => {
@@ -75,7 +84,7 @@ const Registration = () => {
                 })
             }
         }
-       
+       e.target.reset()
         
     };
     return (

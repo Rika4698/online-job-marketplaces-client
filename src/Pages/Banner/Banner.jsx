@@ -23,11 +23,11 @@ const Banner = () => {
                     }}
                     navigation={true}
                     modules={[Autoplay, Pagination, Navigation]}
-                    className="mySwiper"
+                    className="mySwiper "
                 >
      <SwiperSlide>
      
-            <div className="hero min-h-[600px]" style={{backgroundImage: 'url(https://i.ibb.co/0F70htt/wepik-export-20231106060519-ISr-G.png)'}}>
+            <div className="hero min-h-[600px] " style={{backgroundImage: 'url(https://i.ibb.co/0F70htt/wepik-export-20231106060519-ISr-G.png)'}}>
   <div className="hero-overlay bg-opacity-70"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
@@ -52,7 +52,7 @@ const Banner = () => {
 </div>
       </SwiperSlide>
       <SwiperSlide>
-      <div className="hero min-h-[600px]" style={{backgroundImage: 'url(https://i.ibb.co/mcSC8NS/wepik-export-20231106061543-Y8-H6.png)'}}>
+      <div className="hero min-h-[600px] " style={{backgroundImage: 'url(https://i.ibb.co.com/yyr6yfC/businessman-working-laptop.jpg)'}}>
   <div className="hero-overlay bg-opacity-70"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
