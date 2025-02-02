@@ -44,7 +44,7 @@ const MyBids = ({ bids,handleComplete }) => {
                 <button className={`px-4 py-2 font-medium text-white  rounded-md  first-letter:uppercase    ${status === 'in progress' ? 'bg-lime-500 capitalize' : status === 'rejected' ? 'bg-red-500' : status === 'complete' ?"bg-green-800 ":'bg-slate-400'}`}>{status}</button>
 
                 {status === 'in progress' ? (
-                <button onClick={() => handleComplete(_id)} className="ml-4 px-4 py-2 font-medium text-white  rounded-md bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green active:bg-green-600 transition duration-150 ease-in-out ">Complete</button>) : ''}
+                <button onClick={() => handleComplete(_id)} className="ml-4 px-4 py-2 font-medium text-white  rounded-md bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green active:bg-green-600 transition duration-150 ease-in-out animate-bounce" title="Press complete for complete bid request">Complete ?</button>) : ''}
             </td>
         </tr>
 
