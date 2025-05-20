@@ -90,7 +90,7 @@ if (loading) {
             </Helmet>
            {
             bidCard.length == 0 ?
-            <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">Not added any bid request...</h1>
+            <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">Not added any bids...</h1>
             
             :
                        

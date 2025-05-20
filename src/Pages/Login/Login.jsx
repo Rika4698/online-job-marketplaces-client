@@ -20,10 +20,11 @@ const Login = () => {
         
             text: "Google login successfully",
             icon: "success",
+            // button:false,
             
           })
-          .then(() => {
-           navigate(location?.state?location.state :'/' ) })
+          
+           navigate(location?.state?location.state :'/' )
       })
       
   };
@@ -75,7 +76,7 @@ e.target.reset()
             <title>Work Wave|Login</title>
           </Helmet>
            <div className=" min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row">
+  <div className="hero-content flex-col lg:flex-row py-16">
     <div className="hidden lg:flex lg:w-2/5 xl:w-2/5">
       
      <img src="https://i.ibb.co/whp4w3Q/Mobile-login-amico.png" alt="" />

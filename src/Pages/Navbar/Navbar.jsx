@@ -14,93 +14,96 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div >
-      <div className="navbar bg-base-100 py-6  lg:py-6 shadow shadow-slate-400 ">
+      <div className="navbar bg-base-100 py-6  lg:py-6 shadow shadow-slate-400  h-[88px]">
 
-      <div className="navbar-start "> 
-  <div
-          className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40 lg:hidden transition-all duration-300 ${
-            isOpen ? "block" : "hidden"
-          }`}
-          onClick={() => setIsOpen(false)}
-        ></div>
-       
-  <div
-          className={`fixed top-0 left-0   w-2/3  sm:w-1/2 bg-white  h-full z-50 p-6 transition-transform duration-300 ${
-            isOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:static lg:flex lg:items-center lg:w-auto lg:p-0 lg:translate-x-0 `}
-        >
-          <button
+        <div className="navbar-start ">
+          <div
+            className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40 lg:hidden transition-all duration-300 ${isOpen ? "block" : "hidden"
+              }`}
             onClick={() => setIsOpen(false)}
-            className="lg:hidden absolute top-4 right-4 p-2 rounded-full bg-white  z-[100]"
-          >
-            <LuX size={25} />
-          </button>
+          ></div>
 
-          <ul className="space-y-4  lg:hidden">
-           
-            <li className="group max-lg:border-b max-lg:py-4 px-3 relative">
-            <NavLink to="/"
-className={({ isActive, isPending }) =>
-isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
-                }>Home</NavLink>
-            </li>
-      
-            {
-               !user? "": <>
-                  
-                <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/add-job"
-className={({ isActive, isPending }) =>
-isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
-                }>Add Job</NavLink></li>
- 
-                <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to={`/my-jobs`}
-className={({ isActive, isPending }) =>
-isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
-                }>My Posted Jobs</NavLink></li>
-               
-                <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/my-bids"
-className={({ isActive, isPending }) =>
-isPending ? "pending" : isActive ?"text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
-                }>My Bids</NavLink></li>
-                
-                <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/request"
-className={({ isActive, isPending }) =>
-isPending ? "pending" : isActive ?"text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
-                }>Bid
-                  Requests</NavLink></li>
-                                 </>
-      
-    }
-                 <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/about"
+          <div
+            className={`fixed top-0 left-0 overflow-y-auto  w-2/3  sm:w-1/2 bg-white  h-full z-50 p-6 transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"
+              } lg:static lg:flex lg:items-center lg:w-auto lg:p-0 lg:translate-x-0 `}
+          >
+            <button
+              onClick={() => setIsOpen(false)}
+              className="lg:hidden absolute top-4 right-4 p-2 rounded-full bg-white  z-[100]"
+            >
+              <LuX size={25} />
+            </button>
+
+            <ul className="space-y-4 lg:hidden">
+
+              <li className="group max-lg:border-b max-lg:py-4 px-3 relative">
+                <NavLink to="/" onClick={() => setIsOpen(false)}
                   className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
-                  }>About Us</NavLink></li>
+                  }>Home</NavLink>
+              </li>
 
-            
-          </ul>
-        </div>
-        
+              {
+                !user ? "" : <>
 
-        <div className="flex items-center  gap-x-3 max-[639px]:mx-2 sm:mx-6  md:mx-6 lg:hidden">
-          
-          <button onClick={() => setIsOpen(true)} className="ml-3 lg:hidden">
-            <LuMenu size={25} />
-          </button>
-        </div>
+                  <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/add-job" onClick={() => setIsOpen(false)}
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
+                    }>Add Job</NavLink></li>
+
+                  <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to={`/my-jobs`} onClick={() => setIsOpen(false)}
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
+                    }>My Posted Jobs</NavLink></li>
+
+                  <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/my-bids" onClick={() => setIsOpen(false)}
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
+                    }>My Bids</NavLink></li>
+
+                  <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/request" onClick={() => setIsOpen(false)}
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
+                    }>Bid
+                    Requests</NavLink></li>
+                </>
+
+              }
+              <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/about" onClick={() => setIsOpen(false)}
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
+                }>About Us</NavLink></li>
+
+                 <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/contact" onClick={() => setIsOpen(false)}
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-emerald-400 font-bold text-lg " : "font-medium text-black text-lg"
+                }>Contact Us</NavLink></li>
+
+
+            </ul>
+          </div>
+
+
+          <div className="flex items-center  gap-x-3 max-[639px]:mx-2 sm:mx-6  md:mx-6 lg:hidden">
+
+            <button onClick={() => setIsOpen(true)} className="ml-3 lg:hidden">
+              <LuMenu size={25} />
+            </button>
+          </div>
 
 
 
-    
-     
-  
 
 
-        <div className="">
+
+
+
+          <div className="">
             <Link to="/">
-              <img className="  w-28 ml-5 md:w-44 lg:w-40 lg:ml-6" src="https://i.ibb.co/9yRK3c0/work-wave-high-resolution-logo-transparent-2.png" alt="" />
+              <img className="  w-28 h-[52px]  ml-5 md:w-28 lg:w-32 lg:ml-" src="https://i.ibb.co/9yRK3c0/work-wave-high-resolution-logo-transparent-2.png" alt="" />
             </Link>
           </div>
-  </div>
+        </div>
 
 
 
@@ -157,8 +160,8 @@ isPending ? "pending" : isActive ?"text-emerald-400 font-bold text-lg " : "font-
 
 
 
-         <div className="navbar-center hidden lg:flex">
-           <ul className="flex flex-row space-x-7 xl:space-x-9 ">
+        <div className="navbar-center hidden lg:flex">
+          <ul className="flex flex-row space-x-6  xl:space-x-9  mx-8">
             <li><NavLink to="/"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-emerald-500 font-bold text-sm xl:text-base  " : "font-medium text-slate-800 text-sm xl:text-base"
@@ -174,7 +177,7 @@ isPending ? "pending" : isActive ?"text-emerald-400 font-bold text-lg " : "font-
                   className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-emerald-500 font-bold text-sm xl:text-base  " : "font-medium text-slate-800 text-sm xl:text-base"
                   }>My Posted Jobs</NavLink></li>
-                  
+
                 <li><NavLink to="/my-bids"
                   className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-emerald-500 font-bold text-sm xl:text-base " : "font-medium text-slate-800 text-sm xl:text-base"
@@ -184,25 +187,30 @@ isPending ? "pending" : isActive ?"text-emerald-400 font-bold text-lg " : "font-
                     isPending ? "pending" : isActive ? "text-emerald-500 font-bold text-sm xl:text-base " : "font-medium text-slate-800 text-sm xl:text-base"
                   }>Bid
                   Requests</NavLink></li>
-                  </>
+              </>
             }
-                  <li><NavLink to="/about"
-                  className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-emerald-500 font-bold text-sm xl:text-base " : "font-medium text-slate-800 text-sm xl:text-base"
-                  }>About Us</NavLink></li>
-             
+            <li><NavLink to="/about"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-emerald-500 font-bold text-sm xl:text-base " : "font-medium text-slate-800 text-sm xl:text-base"
+              }>About Us</NavLink></li>
 
-           
-           </ul>
-         </div>
-         {
+               <li><NavLink to="/contact"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-emerald-500 font-bold text-sm xl:text-base " : "font-medium text-slate-800 text-sm xl:text-base"
+              }>Contact Us</NavLink></li>
+
+
+
+          </ul>
+        </div>
+        {
           user ?
             <div className="navbar-end min-[425px]:gap-4 max-[375px]:gap-2 ">
 
-<div className="flex items-center flex-col  md:flex-row md:gap-4">
-    <img className="w-8 rounded-full" src={user.photoURL} alt="" />
-    <h3 className=" w-12 mr-2  text-sm text-center font-semibold ">{user.displayName}</h3>
-    </div>
+              <div className="flex items-center flex-col  md:flex-row md:gap-4">
+                <img className="w-8 md:w-10 rounded-full " src={user.photoURL} alt="" />
+                <h3 className=" w-12 mr-2  text-sm text-center font-semibold ">{user.displayName}</h3>
+              </div>
               <button onClick={handleSignOut} className="rounded-lg text-white bg-gradient-to-r from-green-300 to-blue-400 w-[62px] h-12 font-bold m  lg:w-24 lg:h-10 md:w-24 md:h-10 "  >
                 <span className=" text-base font-bold">Logout</span>
                 <BiLogOut className=" hidden md:inline-flex md:text-xl lg:inline-flex lg:text-xl  "></BiLogOut>
@@ -219,8 +227,8 @@ isPending ? "pending" : isActive ?"text-emerald-400 font-bold text-lg " : "font-
       </div>
 
 
-      
-      
+
+
 
 
 

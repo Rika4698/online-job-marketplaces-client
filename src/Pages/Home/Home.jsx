@@ -50,74 +50,7 @@ const Home = () => {
             {/* <BrowseCategorySet></BrowseCategorySet> */}
             <div >
             
-      {/* <Tabs  selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)}>
-      <motion.div  initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay:1.0,duration:1.0}}>
-      <TabList className="bg-blue-300 p-2 text-center text-2xl text-fuchsia-700 font-bold ">
-          {categoryData.map((category, index) => (
-            <Tab  key={index} >{category}</Tab>
-          ))}
-        </TabList>
-              </motion.div>
-              <motion.div  initial={{x: '100vw'}} animate={{x:0}} transition={{type:'spring',delay:1.5}}>
-        {categoryData.map((category, index) => (
-          <TabPanel key={index}>
-            <div className="job-cards grid grid-cols-1 ml-16 pb-12 pt-20   md:grid-cols-2  lg:grid-cols-3  mr-6 gap-8">
-              {getFilteredJobs().map((job) => (
-                
-                <BrowseCategory key={job._id} job={job} ></BrowseCategory>
-               
-              ))
-              
-              }
-            </div>
-          </TabPanel>
-         
-        ))}
-          </motion.div>
-      </Tabs>
-
-
-      <div className="p-5">
-        <Tabs
-          selectedIndex={selectedTab}
-          onSelect={(index) => setSelectedTab(index)}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1.0 }}
-          >
-            <TabList className="flex justify-center bg-blue-300 p-3 rounded-lg text-center text-xl md:text-2xl font-semibold text-fuchsia-700">
-              {categoryData.map((category, index) => (
-                <Tab
-                  key={index}
-                  className="px-5 py-2 mx-2 rounded-lg cursor-pointer hover:bg-blue-400 hover:shadow-md"
-                  selectedClassName="bg-blue-500 text-white"
-                >
-                  {category}
-                </Tab>
-              ))}
-            </TabList>
-          </motion.div>
-
-          <motion.div
-            initial={{ x: "100vw" }}
-            animate={{ x: 0 }}
-            transition={{ type: "spring", delay: 1.0 }}
-          >
-            {categoryData.map((category, index) => (
-              <TabPanel key={index}>
-                <div className="grid grid-cols-1 gap-6 pt-10 pb-12 md:grid-cols-2 lg:grid-cols-3">
-                  {getFilteredJobs().map((job) => (
-                    <BrowseCategory key={job._id} job={job}></BrowseCategory>
-                  ))}
-                </div>
-              </TabPanel>
-            ))}
-          </motion.div>
-        </Tabs>
-      </div> */}
-
+   
       <div className="pt-5 bg-slate-200">
         <Tabs selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)}>
           {/* <motion.div

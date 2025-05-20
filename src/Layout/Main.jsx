@@ -9,8 +9,16 @@ import { useEffect, useState } from 'react';
 
 const Main = () => {
 
-
+ const [isLoading, setIsLoading] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
+    useEffect(() => {
+       
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+        }, 1500);
+        return () => clearTimeout(timer);
+      }, []);
+
 
     // Toggle visibility of the button based on scroll position
     useEffect(() => {
@@ -35,18 +43,29 @@ const Main = () => {
         behavior: 'smooth',
       });
     };
+
+
+
+    const noHeaderFooter = location.pathname.includes('login')|| location.pathname.includes('register');
+
     return (
+      <div>
+       {isLoading ? (
+        <div className="flex justify-center items-center h-screen bg-white dark:bg-slate-800">
+        <span className="loading loading-spinner loading-lg text-gray-800 dark:text-gray-200"></span>
+    </div>
+      ) : (<>
         <div>
             <ScrollToTop></ScrollToTop>
             <div className='sticky top-0 z-10'> 
              {/* <motion.div initial={{y: -250}} animate={{y: -5}}> */}
-             <Navbar></Navbar>
+            { noHeaderFooter || <Navbar></Navbar>}
                 {/* </motion.div>    */}
            
             </div>
             <Outlet></Outlet>
             {/* <motion.div initial={{x: -250}} animate={{x: 0}} > */}
-            <Footer></Footer>
+            {noHeaderFooter || <Footer></Footer>}
             {/* </motion.div> */}
 
 
@@ -114,6 +133,7 @@ const Main = () => {
     </button>
             
         </div>
+        </>)}</div>
     );
 };
 

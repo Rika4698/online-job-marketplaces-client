@@ -13,6 +13,7 @@ import MyJob from "../Pages/MyJob/MyJob";
 import MyBidsSet from "../Pages/MyBids/MyBidsSet";
 import BidRequestSet from "../Pages/BidRequest/BidRequestSet";
 import About from "../Pages/About/About";
+import Contact from "../Pages/Contact/Contact";
 
 
 
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
         {
           path:'/about',
           element:<About></About>,
+        },
+        {
+          path:'/contact',
+          element:<Contact></Contact>,
         },
         {
           path:'/login',

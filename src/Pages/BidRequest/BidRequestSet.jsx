@@ -83,7 +83,7 @@ const BidRequestSet = () => {
             <h1 className="text-center font-bold text-4xl text-rose-500 pt-8 mb-20">Not added any bid request...</h1>
             :
             <div className="">
-                        <h1 className="text-center font-bold text-4xl text-orange-700 pt-8 mb-2">Bids Request</h1>
+                        <h1 className="text-center font-bold  text-4xl text-emerald-500 pt-8 mb-2">Bids Request</h1>
                         <div className="overflow-x-auto my-9">
                         <table className="min-w-full divide-y divide-gray-200   ">
     <thead className="bg-gray-50">

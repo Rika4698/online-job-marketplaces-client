@@ -2,8 +2,8 @@
 
 const UpcomingJob = () => {
     return (
-        <div className="bg-red-50 py-8">
-            <h1 className=" text-center text-4xl font-bold text-amber-700 mx-2">Upcoming Job Category</h1>
+        <div className="bg-slate-200 py-8">
+            <h1 className=" text-center text-4xl font-bold text-blue-600 mx-2">Upcoming <span className="text-emerald-600">Job Category</span></h1>
             {/* <div className="grid grid-cols-1  pb-12 pt-20   md:grid-cols-2  lg:grid-cols-3   gap-8">
             <div className="card h-[300px] bg-base-100 shadow-xl chat-image">
   <figure className=""><img src="https://i.ibb.co/T8ccLLC/HD-wallpaper-technology-programming-c-programming.jpg" alt="" /></figure>

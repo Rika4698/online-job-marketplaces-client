@@ -33,29 +33,6 @@ const BrowseCategory = ({job}) => {
     return (
         <div>
 
-           {/* <div className="card h-[700px] bg-pink-50 "> */}
-  {/* <figure className="mx-10 mt-10 mb-2 "> */}
-    {/* <img src={image} alt="" className="rounded-xl rounded-b-none w-[400px] h-[230px]  " /> */}
-  {/* </figure> */}
-  {/* <div className="card-body items-center text-center">
-    <h2 className="card-title font-bold ">{name}</h2>
-    <div className=" flex-row  lg:flex gap-2">
-    <h3 className="font-bold">Application deadline: </h3>
-    <h3>{deadline}</h3>
-    </div>
-    <h3 className="text-orange-600 font-bold">Price range: {minPrice}TK-{maxPrice}TK</h3>
-    <h3 className="font-bold text-xl text-blue-400">Description:</h3>
-    
-    <p className="" >{paragraphs[0]}</p>
-     
-
-    <div className="card-actions">
-      <Link to={`/jobs/${_id}`}>
-      <button className="btn capitalize bg-lime-500 text-lg text-white mt-4">Bid Now</button>
-      </Link>
-    </div>
-  </div>
-</div> */}
 
 
 
@@ -70,7 +47,7 @@ const BrowseCategory = ({job}) => {
         <h3 className="mt-1 text-green-600 font-medium">Salary range: {minPrice}TK - {maxPrice}TK</h3>
         
     
-    <p className="mt-1 xl:text-lg  min-h-[106px] xl:min-h-[100px] font-semibold text-sky-600" >Description: <span className="ml-1 text-gray-600 text-sm mb-4 font-normal flex">{paragraphs}</span></p>
+    <p className="mt-1 xl:text-lg  min-h-[106px] xl:min-h-[100px] font-semibold text-sky-600" >Description: <span className="ml-1 text-gray-600 text-sm mb-4 font-medium flex">{paragraphs}</span></p>
         
         <div className="flex items-center justify-end">
         <Link to={`/jobs/${_id}`}>

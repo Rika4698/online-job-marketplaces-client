@@ -93,7 +93,7 @@ const Registration = () => {
             <title>Work Wave|Registration</title>
           </Helmet>
              <div className=" bg-gradient-to-r from-violet-50 to-blue-200">
-  <div className="hero-content flex-col lg:flex">
+  <div className="hero-content flex-col lg:flex pt-14">
     
     <div className="card  w-full max-w-sm lg:w-[500px] min-h-[500px]  bg-gradient-to-r from-violet-100 to-pink-200">
     <div className="text-center mt-8">
