@@ -14,7 +14,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div >
-      <div className="navbar bg-base-100 py-6  lg:py-6 shadow shadow-slate-400  h-[88px]">
+      <div className="navbar bg-base-100 py-6  lg:py-6 shadow shadow-slate-400 ">
 
         <div className="navbar-start ">
           <div

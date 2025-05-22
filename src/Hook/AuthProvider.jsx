@@ -130,9 +130,9 @@ const AuthProvider = ({children}) => {
         logOut,
      }; 
     return (
-        <AuthContext.Provider value={AuthInfo}>{children}
-
-            </AuthContext.Provider>
+        <AuthContext.Provider value={AuthInfo}>
+            {children}
+       </AuthContext.Provider>
     );
 };
 
